@@ -12,12 +12,12 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 
  public static Connection conec = null;
-    private static final String host = "jdbc:mysql://localhost/";
-    private static final String user = "root";
-    private static final String pass = "nicolas89";
-    private static  String bd= "prueba";
-    private static final String driver="com.mysql.cj.jdbc.Driver";
-      public static ArrayList<String> msjError=new ArrayList<String>();
+ private static final String host = "jdbc:mysql://localhost/";
+ private static final String user = "root";
+ private static final String pass = "nicolas89";
+ private static  String bd= "prueba";
+ private static final String driver="com.mysql.cj.jdbc.Driver";
+ public static ArrayList<String> msjError=new ArrayList<String>();
 
 
 
