@@ -21,7 +21,7 @@ import java.sql.ResultSet;
 
 
 
-public static boolean getConeccion() {
+/*public static boolean getConeccion() {
         boolean res = false;
         if (servicioMysql()) {
             if (servicioMysql()) {
@@ -41,7 +41,7 @@ public static boolean getConeccion() {
         }
         return res;
 
-    }
+    }*/
 
 public static boolean getDesconexion(){
         boolean result;
