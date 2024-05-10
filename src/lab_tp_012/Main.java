@@ -1,23 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
+
 package lab_tp_012;
 
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
- *
  * @author Martin
  */
 public class Main {
 
-    /**
-     * @param args the command line arguments
-     */
+  
     public static void main(String[] args) {
         Connection cn;
         PreparedStatement ps;
@@ -37,7 +29,8 @@ public class Main {
             /*
                INICIO SENTENCIAS DML
              */
-            //Agregar empleados
+            //Agregar empleados 
+            /*FERRANDO CARLOS*/
             /*sql = "INSERT INTO empleado(dni, apellido, nombre_empleado, acceso, estado) "
                     + "VALUES (12345678,'Gomez','Nicolas',1,true),"
                     + "(98765432,'Aguero','Fernando',2,true),"
@@ -53,33 +46,34 @@ public class Main {
                 JOptionPane.showMessageDialog(null, "Consulta exitosa!! Cantidad de filas afectadas: " + reg);
             }*/
             //Consultas
-            /*sql = "SELECT * FROM herramienta WHERE stock > 10";
+            sql = "SELECT * FROM herramienta WHERE stock > 10";
             ps = cn.prepareStatement(sql);
-            ResultSet res = ps.executeQuery();
+            ResultSet res1 = ps.executeQuery();
 
-            while (res.next()) {
-                System.out.printf("ID ------------------------------ %s%n", res.getInt("id_Herramienta"));
-                System.out.printf("Nombre Herramienta -------------- %s%n", res.getString("nombre_h"));
-                System.out.printf("Descripcion --------------------- %s%n",res.getString("descripcion"));
-                System.out.printf("Stock --------------------------- %s%n",res.getInt("stock"));
-                System.out.printf("ID ------------------------------ %s%n",res.getBoolean("estado"));
+            while (res1.next()) {
+                System.out.printf("ID ------------------------------ %d%n", res1.getInt("id_Herramienta"));
+                System.out.printf("Nombre Herramienta -------------- %s%n", res1.getString("nombre_h"));
+                System.out.printf("Descripcion --------------------- %s%n",res1.getString("descripcion"));
+                System.out.printf("Stock --------------------------- %d%n",res1.getInt("stock"));
+                System.out.printf("Estado -------------------------- %s%n",res1.getBoolean("estado"));
                 System.out.println("************************************************************");
-            }*/
+            }
             //Borrar logicamente
+            //Se obtiene con la Query el primer id 
             int id = 0;
             String sql1 = "SELECT id_empleado FROM empleado LIMIT 1";
             ps = cn.prepareStatement(sql1);
             ResultSet res = ps.executeQuery();
-            //id = res.getInt("id_empleado");
+            
             if (res.next()){
-                id = res.getInt("id_empleado");
+                id = res.getInt("id_empleado");//se le asigna al id el primer id_empleado
                 System.out.println("id " + id);
             }
-            System.out.println(id);
             
-            sql = "UPDATE empleado SET estado = true WHERE id_Empleado = ?";
+            //se consulta para actualizar el estado sin conocer el id del empleado
+            sql = "UPDATE empleado SET estado = false WHERE id_Empleado = ?";
             ps = cn.prepareStatement(sql);
-            ps.setInt(1, id);
+            ps.setInt(1, id);//se selecciona el comodin y se le asigna el id
             int reg = ps.executeUpdate();
             if (reg > 0) {
                 JOptionPane.showMessageDialog(null, "Consulta exitosa!! Cantidad de filas afectadas: " + reg);
