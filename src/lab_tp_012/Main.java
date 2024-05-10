@@ -34,11 +34,16 @@ public class Main {
             Class.forName(driver);
             //conexión a la BD
             cn = DriverManager.getConnection(url, usr, pass);
-            //Agregar un empleado
-            sql = "INSERT INTO empleado(dni, apellido, nombre_empleado, acceso, estado) "
+            //Agregar empleados
+            /*sql = "INSERT INTO empleado(dni, apellido, nombre_empleado, acceso, estado) "
                     + "VALUES (12345678,'Gomez','Nicolas',1,true),"
                     + "(98765432,'Aguero','Fernando',2,true),"
-                    + "(55666774,'Marcone','Cintia',1,true);";
+                    + "(55666774,'Marcone','Cintia',1,true);";*/
+            //Agregar Heramientas
+            sql = "INSERT INTO herramienta (nombre_h,descripcion,stock,estado)"
+                    + "VALUES ('Pico','Usado en terrenos duros, para desbastar y remover piedras',50,true),"
+                    + "('Martillo Neumático','Usado para realizar agujeros de grandes dimensioneso demoler',5,true),"
+                    + "('Lima Triangular', 'Usada para ajustar ángulos entrantes e inferiores a 90 grados',15,true)";
             ps = cn.prepareStatement(sql);
             reg = ps.executeUpdate();
         } catch (ClassNotFoundException ex) {
