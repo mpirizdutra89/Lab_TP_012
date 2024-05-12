@@ -15,6 +15,7 @@ public class Main {
         PreparedStatement ps;
 
         String driver, url, usr, pass, sql;
+        int reg;
         //
         driver = "org.mariadb.jdbc.Driver";
         url = "jdbc:mariadb://localhost:3306/lab1_tp10_bd";
@@ -46,7 +47,7 @@ public class Main {
                 JOptionPane.showMessageDialog(null, "Consulta exitosa!! Cantidad de filas afectadas: " + reg);
             }*/
             //Consultas
-            sql = "SELECT * FROM herramienta WHERE stock > 10";
+            /*sql = "SELECT * FROM herramienta WHERE stock > 10";
             ps = cn.prepareStatement(sql);
             ResultSet res1 = ps.executeQuery();
 
@@ -77,7 +78,64 @@ public class Main {
             int reg = ps.executeUpdate();
             if (reg > 0) {
                 JOptionPane.showMessageDialog(null, "Consulta exitosa!! Cantidad de filas afectadas: " + reg);
+            }*/
+            
+            
+            /*AGUSTIN JOFRE*/
+            //Agregar empleados
+            
+            /*sql = "INSERT INTO empleado "
+                  + "(dni, apellido, nombre_empleado, acceso, estado) VALUES "
+                  + "(11222333,'Lopez','Jorge',1,true),"
+                  + "(11333444,'Jofre','Rodrigo',2,true),"
+                  + "(22444555,'Lucero','Romina',1,true)";
+            ps = cn.prepareStatement(sql);
+            reg = ps.executeUpdate();
+            if (reg > 0) {
+            JOptionPane.showMessageDialog(null, "Consulta exitosa!! Cantidad de filas afectadas: " + reg);
+            }else{
+            JOptionPane.showMessageDialog(null, "No se pudo realizar la consulta, revíse en busca de errores");
+            }*/
+            
+            //Agregar herramientas
+            
+            /*sql = "INSERT INTO herramienta"
+                  + "(nombre_h, descripcion, stock, estado) VALUES "
+                  + "('Cuchara de albañil','Cuchara para mamposteria',13,1),"
+                  + "('Brocha plana','Brocha para superficies amplias',20,1),"
+                  + "('Destornillador punta torx','Punta torx T6 ',4,1)";  
+            ps = cn.prepareStatement(sql);
+            reg = ps.executeUpdate();
+            if (reg > 0) {
+            JOptionPane.showMessageDialog(null, "Consulta exitosa!! Cantidad de filas afectadas: " + reg);
+            }else{
+            JOptionPane.showMessageDialog(null, "No se pudo realizar la consulta, revíse en busca de errores");
+            }*/
+            
+            //Listar las herramientas con stock superior a 10
+            
+            sql = "SELECT * FROM herramienta WHERE stock > 10";
+            ps = cn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                
+                int idHerramienta = rs.getInt("id_Herramienta");
+                String nombre = rs.getString("nombre_h");
+                String descripcion = rs.getString("descripcion");
+                int stock = rs.getInt("stock");
+                boolean estado = rs.getBoolean("estado");
+                
+                System.out.println("idHerramienta " + idHerramienta);
+                System.out.println("nombre " + nombre);
+                System.out.println("descripcion " + descripcion);        
+                System.out.println("stock " + stock);
+                System.out.println("estado " + estado);
+                System.out.println("\n");
             }
+                    
+            
+            
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Error al cargar Driver" + ex.getMessage());
             ex.printStackTrace();
