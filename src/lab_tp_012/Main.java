@@ -145,6 +145,37 @@ public class Main {
             JOptionPane.showMessageDialog(null, "No se pudo realizar la consulta, revíse en busca de errores");
             }*/
             
+            /*Ariel Zurita*/
+            //Agregar empleados
+            
+             /*sql = "INSERT INTO empleado "
+                  + "(dni, apellido, nombre_empleado, acceso, estado) VALUES "
+                  + "(40064081,'Zurita','Ariel',1,true),"
+                  + "(49583726,'Maradona','Diego',2,true),"
+                  + "(22444555,'Gallardo','Marcelo',2,true)";
+            ps = cn.prepareStatement(sql);
+            reg = ps.executeUpdate();
+            if (reg > 0) {
+            JOptionPane.showMessageDialog(null, "Consulta exitosa!! Cantidad de filas afectadas: " + reg);
+            }else{
+            JOptionPane.showMessageDialog(null, "No se pudo realizar la consulta, revíse en busca de errores");
+            }
+            
+            //Agregar herramientas
+            
+            sql = "INSERT INTO herramienta"
+                  + "(nombre_h, descripcion, stock, estado) VALUES "
+                  + "('Martillo','Herramienta para golpear',10,1),"
+                  + "('Destornillador','Herramienta para atornillar',20,1),"
+                  + "('sierra','Herramienta para cortar',30,1)";  
+            ps = cn.prepareStatement(sql);
+            reg = ps.executeUpdate();
+            if (reg > 0) {
+            JOptionPane.showMessageDialog(null, "Consulta exitosa!! Cantidad de filas afectadas: " + reg);
+            }else{
+            JOptionPane.showMessageDialog(null, "No se pudo realizar la consulta, revíse en busca de errores");
+            }*/
+            
             //Listar las herramientas con stock superior a 10
             
             sql = "SELECT * FROM herramienta WHERE stock > 10";
